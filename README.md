@@ -1,3 +1,3 @@
 # leeborio.github.io
 
-[Something](algo.html)
+[Size Color Quantiry](scq.html)
