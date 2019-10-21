@@ -1,2 +1,3 @@
 # leeborio.github.io
-Lee's site.
+
+[Something](algo.html)
