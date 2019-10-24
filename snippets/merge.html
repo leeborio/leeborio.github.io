@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome file</title>
+  <link rel="stylesheet" href="markdown.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><h2 id="section">-</h2>
+<h3 id="merging-data-frames">merging data frames</h3>
+<pre class=" language-python"><code class="prism  language-python">tables <span class="token operator">=</span> pd<span class="token punctuation">.</span>DataFrame<span class="token punctuation">(</span>alfa<span class="token punctuation">.</span>table_name<span class="token punctuation">.</span>unique<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+tables <span class="token operator">=</span> tables<span class="token punctuation">.</span>rename<span class="token punctuation">(</span>columns<span class="token operator">=</span><span class="token punctuation">{</span><span class="token number">0</span><span class="token punctuation">:</span> <span class="token string">'all_tables'</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span> tables<span class="token punctuation">.</span>count<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+with_update <span class="token operator">=</span> pd<span class="token punctuation">.</span>DataFrame<span class="token punctuation">(</span>alfa<span class="token punctuation">[</span><span class="token punctuation">(</span>alfa<span class="token punctuation">.</span>column_name <span class="token operator">==</span> <span class="token string">'UPDT_DT_TM'</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">'table_name'</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">.</span>unique<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+with_update <span class="token operator">=</span> with_update<span class="token punctuation">.</span>rename<span class="token punctuation">(</span>columns<span class="token operator">=</span><span class="token punctuation">{</span><span class="token number">0</span><span class="token punctuation">:</span> <span class="token string">'right_table'</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span> with_update<span class="token punctuation">.</span>count<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+missing_update <span class="token operator">=</span> pd<span class="token punctuation">.</span>merge<span class="token punctuation">(</span>tables<span class="token punctuation">,</span> with_update<span class="token punctuation">,</span> how<span class="token operator">=</span><span class="token string">'left'</span><span class="token punctuation">,</span> left_on<span class="token operator">=</span><span class="token string">'all_tables'</span><span class="token punctuation">,</span> right_on<span class="token operator">=</span><span class="token string">'right_table'</span><span class="token punctuation">)</span>
+missing_update<span class="token punctuation">[</span><span class="token punctuation">(</span>missing_update<span class="token punctuation">.</span>right_table<span class="token punctuation">.</span>isnull<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">]</span>
+</code></pre>
+</div>
+</body>
+
+</html>
