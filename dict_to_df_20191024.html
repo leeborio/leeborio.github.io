@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>yadira_20191023</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><h3 id="pandas-data-frame">Pandas Data Frame</h3>
+<p>In this post I’m going to present an example of how to create a pandas data frame “on the fly” from a Python dictionary</p>
+<pre class=" language-python"><code class="prism  language-python"><span class="token keyword">import</span> pandas <span class="token keyword">as</span> pd
+dixio <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token string">'size'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">:</span> <span class="token string">'XS'</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">:</span> <span class="token string">'S'</span><span class="token punctuation">}</span>
+    <span class="token punctuation">,</span> <span class="token string">'color'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">:</span> <span class="token string">'Green'</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">:</span> <span class="token string">'Red'</span><span class="token punctuation">}</span>
+    <span class="token punctuation">,</span> <span class="token string">'status'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">:</span> <span class="token string">'Active'</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">:</span> <span class="token string">'Inactive'</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+DF <span class="token operator">=</span> pd<span class="token punctuation">.</span>DataFrame<span class="token punctuation">(</span>dixio<span class="token punctuation">)</span><span class="token punctuation">;</span> DF
+</code></pre>
+<pre>Output</pre>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>size</th>
+<th>color</th>
+<th>status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>XS</td>
+<td>Green</td>
+<td>Active</td>
+</tr>
+<tr>
+<td>2</td>
+<td>S</td>
+<td>Red</td>
+<td>Inactive</td>
+</tr>
+</tbody>
+</table><p>In the dictionary structure described above we are “embedding” the row index within the data declaration sections of the dictionary</p>
+<p>Another way to construct a data frame from a dictionary is to “attach” the index to the dictionary when invoking the DataFrame function, as shown below</p>
+<pre class=" language-python"><code class="prism  language-python">another_df <span class="token operator">=</span> pd<span class="token punctuation">.</span>DataFrame<span class="token punctuation">(</span><span class="token punctuation">{</span>
+    <span class="token string">'size'</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'L'</span><span class="token punctuation">,</span> <span class="token string">'XL'</span><span class="token punctuation">]</span>
+    <span class="token punctuation">,</span> <span class="token string">'color'</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'Blue'</span><span class="token punctuation">,</span> <span class="token string">'Yellow'</span><span class="token punctuation">]</span>
+    <span class="token punctuation">,</span> <span class="token string">'active'</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token boolean">True</span><span class="token punctuation">,</span> <span class="token boolean">False</span><span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+    <span class="token punctuation">,</span> index <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+another_df
+</code></pre>
+<pre>Output</pre>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>size</th>
+<th>color</th>
+<th>active</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>L</td>
+<td>Blue</td>
+<td>True</td>
+</tr>
+<tr>
+<td>1</td>
+<td>XL</td>
+<td>Yellow</td>
+<td>False</td>
+</tr>
+</tbody>
+</table></div>
+</body>
+
+</html>
